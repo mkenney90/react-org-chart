@@ -1,0 +1,14 @@
+.searchBar {
+    margin-bottom: 1em;
+}
+
+.searchBar input {
+    font-size: 1.25em;
+}
+
+.list {
+    font-size: 1.15em;
+    line-height: 2em;
+    min-height: 12em;
+    font-weight: bold;
+}

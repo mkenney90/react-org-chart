@@ -1,0 +1,63 @@
+/*
+* most styles seen here and in ChartNode were taken from 
+* https://webdesign.tutsplus.com/tutorials/css-charts-how-to-create-an-organizational-chart--cms-36163
+* and modified for this project
+*/
+
+ .container input {
+      margin-bottom: 25px;
+  }
+   
+  .chart * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+   
+  .chart ol {
+    list-style: none;
+  }
+   
+  .chart body {
+    margin: 50px 0 100px;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+  }
+   
+  .container {
+    min-width: 500px;
+    max-width: 950px;
+    padding: 0 10px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+      margin: 0 5px;
+  }
+
+  .normalDisplay {
+    font-size: 14pt;
+    font-weight: 600;
+    animation-name: flashRed;
+    animation-duration: 1500ms;
+    overflow: hidden;
+  }
+
+  .flashDisplay {
+    color: #890111;
+  }
+
+  @keyframes flashRed {
+    from {      
+        font-size: 18pt;
+        color: #890111;
+    }
+    to {
+        font-size: 14pt;
+        color: black;
+    }
+  }
+
+  
