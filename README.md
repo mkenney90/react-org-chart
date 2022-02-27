@@ -10,8 +10,8 @@ Clicking on an employee node rebuilds the org chart starting at the selected emp
 
 ### TODO:
 
-*Add support for employee profile pictures/portraits
+* Add support for employee profile pictures/portraits
 
-*Add support for custom color themes created by the user
+* Add support for custom color themes created by the user
 
-*Cleanup hanging node connectors beneath employees with no subordinates
+* Cleanup hanging node connectors beneath employees with no subordinates
