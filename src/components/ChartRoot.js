@@ -1,9 +1,8 @@
-import { useEffect, useState, useRef } from "react";
-//import useFormatSalary from "../hooks/useFormatSalary";
+import { useEffect, useState } from "react";
+import useFormatSalary from "../hooks/useFormatSalary";
 import Loading from "./Loading";
 import ChartNode from "./ChartNode";
 import styles from "./ChartRoot.module.css";
-import nodeStyles from "./ChartNode.module.css";
 
 const ChartRoot = ({ bigBoss, employees }) => {
 	const [chart, setchart] = useState({});
@@ -11,7 +10,6 @@ const ChartRoot = ({ bigBoss, employees }) => {
 	const [salary, setSalary] = useState(null);
     const [inputValue, setInputValue] = useState("");
     const [startingPerson, setStartingPerson] = useState(null);
-    const searchInput = useRef(null);
 
 	useEffect(() => {
         let subSalary = 0;
@@ -40,32 +38,7 @@ const ChartRoot = ({ bigBoss, employees }) => {
 			}
 		}
 
-	}, [employees, bigBoss, salary, startingPerson]);
-
-    // loop through employees and apply proper classes based on hierarchy
-    // give the last "row" on display a class to prevent drawing unnecessary lines
-    let employeeLevel = 1;
-	const RecursiveBranches = (startingBranch) => {
-		if (startingBranch.employees.length) {
-            employeeLevel += 1;
-			return (
-				<ul className={nodeStyles["level_"+employeeLevel+"_wrapper"]}>
-					{startingBranch.employees.map((person, idx) => (
-						<li key={`${person.boss}-${person.name}`}>
-							<ChartNode 
-                                name={person.name} 
-                                salary={person.salary} 
-                                level={employeeLevel} 
-                                last={idx + 1 === startingBranch.employees.length && !person.employees.length}
-                                onClick={() => changeStartingPoint(person)}
-                            />
-							{RecursiveBranches(person)}
-						</li>
-					))}
-				</ul>
-			);
-		}
-	};
+	}, [employees, bigBoss, chartReady, startingPerson]);
 
     const handleChange = (e) => {
         setInputValue(e.target.value);
@@ -81,10 +54,9 @@ const ChartRoot = ({ bigBoss, employees }) => {
         }
 	};
 
-    const changeStartingPoint = (employee) => {
-        setchartReady(false);
-        setSalary(null);
-        setStartingPerson(employee);
+    const handleClick = (e) => {
+        if (e.level === 1) return;
+        changeStartingPoint(e);
     }
 
     const handleReset = () => {
@@ -95,7 +67,13 @@ const ChartRoot = ({ bigBoss, employees }) => {
         setInputValue("");
     }
 
-	const finalSalary = (totalSalary) => '$'.concat(totalSalary);
+    const changeStartingPoint = (employee) => {
+        setchartReady(false);
+        setSalary(null);
+        setStartingPerson(employee);
+    }
+
+    const finalSalary = useFormatSalary(salary);
 
 	return chartReady ? (
         <div className={styles.container}>
@@ -104,21 +82,18 @@ const ChartRoot = ({ bigBoss, employees }) => {
 					placeholder="Start from employee..."
 					onChange={handleChange}
                     value={inputValue}
-                    ref={searchInput}
 				></input>
                 <button
                     className={styles.btn}
                     onClick={handleReset}
                 >Reset</button>
 			</header>
-            <ChartNode 
-                name={chart.name} 
-                salary={chart.salary} 
-                last={!chart.employees.length} 
+            <ChartNode
+                onClick={handleClick}
+                {...chart}
             />
-            {RecursiveBranches(chart)}
 			<footer>
-				<span className={`${chartReady ? styles.normalDisplay : styles.flashDisplay}`}>Total Salary: {finalSalary(salary)}</span>
+				<span className={`${chartReady ? styles.normalDisplay : styles.flashDisplay}`}>Total Salary: {finalSalary}</span>
 			</footer>
 		</div>
 	) : (

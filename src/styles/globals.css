@@ -200,7 +200,8 @@ a.active:hover {
 }
 
 main > article {
-    border: 0;
+    border: 1px solid #52796f;
+    border-top: none;
     box-shadow: 0 3px 3px #52796f;
     border-radius: 0 0 5px 5px;
     width: 100%;
