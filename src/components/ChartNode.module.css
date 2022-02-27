@@ -8,13 +8,17 @@
     min-width: 150px;
 }
 
+.level_1_wrapper {
+    position: relative;
+}
+
 .level_1 {
     width: 50%;
     margin: 0 auto 40px;
     background: var(--level-1);
 }
-   
-  .level_1:not(.lastNode)::before {
+
+.level_1:not(.lastNode)::before {
     content: "";
     position: absolute;
     top: 100%;
@@ -23,40 +27,29 @@
     width: 2px;
     height: 20px;
     background: var(--black);
-  }
+}
 
-  .level_2_wrapper {
-    position: relative; 
+.level_2_wrapper {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-  }
-   
-  .level_2_wrapper::before {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.level_2_wrapper::before {
     content: "";
     position: absolute;
-    top: -20px;
     left: 25%;
+    top: -20px;
     width: 50%;
-    background: var(--black);
-  }
-   
-  .level_2_wrapper::after {
-    display: none;
-    content: "";
-    position: absolute;
-    left: -20px;
-    bottom: -20px;
-    width: calc(100% + 20px);
     height: 2px;
     background: var(--black);
-  }
-   
-  .level_2_wrapper li {
+}
+
+.level_2_wrapper div {
     position: relative;
-    width: 100%;
-  }
-   
-  .level_2_wrapper > li::before {
+}
+
+.level_2_wrapper > div::before {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -65,15 +58,15 @@
     width: 2px;
     height: 20px;
     background: var(--black);
-  }
-   
-  .level_2 {
+}
+
+.level_2 {
     width: 70%;
     margin: 0 auto 40px;
     background: var(--level-2);
-  }
-   
-  .level_2:not(.lastNode)::before {
+}
+
+.level_2:not(.lastNode)::before {
     content: "";
     position: absolute;
     top: 100%;
@@ -82,9 +75,9 @@
     width: 2px;
     height: 20px;
     background: var(--black);
-  }
-   
-  .level_2::after {
+}
+
+.level_2::after {
     display: none;
     content: "";
     position: absolute;
@@ -94,18 +87,18 @@
     width: 20px;
     height: 2px;
     background: var(--black);
-  }
+}
 
-  .level_3_wrapper {
+.level_3_wrapper {
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 0;
     width: 100%;
     margin: 0 auto;
-  }
-   
-  .level_3_wrapper::before {
+}
+
+.level_3_wrapper::before {
     content: "";
     position: absolute;
     top: -20px;
@@ -113,9 +106,9 @@
     width: 50%;
     height: 2px;
     background: var(--black);
-  }
-   
-  .level_3_wrapper > li::before {
+}
+
+.level_3_wrapper > div::before {
     content: "";
     position: absolute;
     top: 0;
@@ -124,30 +117,26 @@
     width: 2px;
     height: 20px;
     background: var(--black);
-  }
-   
-  .level_3 {
+}
+
+.level_3 {
     margin-bottom: 20px;
     background: var(--level-3);
-  }
+}
 
-  .rectangle {
+.rectangle {
     position: relative;
     padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     font-size: 14pt;
     transition-duration: 300ms;
-  }
+}
 
-  .node_wrapper {
-      padding: 0 10px;
-      margin: 0;
-  }
+.node_wrapper {
+    padding: 0 10px;
+    margin: 0;
+}
 
-  .rectangle:before:last-child {
-      display: none;
-  }
-
-  .rectangle:hover {
+.rectangle:hover {
     outline: 5px solid white;
 }

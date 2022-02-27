@@ -1,31 +1,31 @@
 [
   {
     "name": "Mike",
-    "salary": 50000
+    "salary": 85000
   },
   {
     "name": "Dave",
-    "salary": 45000,
+    "salary": 75000,
     "boss": "Mike"
   },
   {
     "name": "Rick",
-    "salary": 35000,
-    "boss": "Dave"
+    "salary": 60000,
+    "boss": "Mike"
   },
   {
     "name": "Andy",
-    "salary": 35000,
+    "salary": 60000,
     "boss": "Dave"
   },
   {
     "name": "Suzanne",
-    "salary": 45000,
+    "salary": 55000,
     "boss": "Dave"
   },
   {
     "name": "Dan",
-    "salary": 35000,
+    "salary": 45000,
     "boss": "Dave"
   }
 ]
